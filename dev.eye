@@ -27,7 +27,7 @@ Eye.application :nectar_server_dev do
     pid_file 'apps/camera-server.pid'
     stdall 'apps/camera-server.log'
 
-    start_command "java -Xmx64m -jar apps/camera-server.jar -d OPENCV -id 0 -o camera0"
+    start_command "java -Xmx64m -jar apps/camera-server.jar -f rgb -d OPENNI2 -id 0 -o camera0"
     # stop_signals [:TERM, 5.seconds, :KILL]
     # restart_command 'kill -USR2 {PID}'
 
@@ -45,7 +45,7 @@ Eye.application :nectar_server_dev do
     pid_file 'apps/marker-server.pid'
     stdall 'apps/marker-server.log'
 
-    start_command "apps/markers-detection-server -i camera0 --camera-parameters camera0 -o camera0:markers"
+    start_command "apps/markers-detection-server -i camera0 --camera-parameters camera0 -o camera0:markers --markerboard-file apps/markerboard_480-499.cfg --camera-calibration apps/no_distortion.cal -v"
   end
 end
 
