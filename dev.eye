@@ -1,14 +1,12 @@
-
-
 Eye.application :nectar_server_dev do
-#  env 'RAILS_ENV' => RAILS_ENV
+  #  env 'RAILS_ENV' => RAILS_ENV
   trigger :flapping, times: 10, within: 1.minute
   working_dir File.expand_path(File.join(File.dirname(__FILE__), %w[ processes ]))
 
   process :redis do
-   daemonize true
-    pid_file 'redis/db/redis_6379.pid'
-    stdall 'redis/nectar-redis.log'
+    daemonize true
+    pid_file "redis/db/redis_6379.pid"
+    stdall "redis/nectar-redis.log"
 
     start_command "/usr/bin/redis-server redis.conf"
     # stop_signals [:TERM, 5.seconds, :KILL]
@@ -23,9 +21,9 @@ Eye.application :nectar_server_dev do
   end
 
   process :camera do
-   daemonize true
-    pid_file 'apps/camera-server.pid'
-    stdall 'apps/camera-server.log'
+    daemonize true
+    pid_file "apps/camera-server.pid"
+    stdall "apps/camera-server.log"
 
     start_command "java -Xmx64m -jar apps/camera-server.jar -f rgb -d OPENNI2 -id 0 -o camera0"
     # stop_signals [:TERM, 5.seconds, :KILL]
@@ -42,10 +40,9 @@ Eye.application :nectar_server_dev do
 
   process :markers do
     daemonize true
-    pid_file 'apps/marker-server.pid'
-    stdall 'apps/marker-server.log'
+    pid_file "apps/marker-server.pid"
+    stdall "apps/marker-server.log"
 
     start_command "apps/markers-detection-server -i camera0 --camera-parameters camera0 -o camera0:markers --markerboard-file apps/markerboard_480-499.cfg --camera-calibration apps/no_distortion.cal -v"
   end
 end
-
