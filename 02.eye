@@ -26,7 +26,7 @@ Eye.application :dev02 do
         pid_file 'apps/camera-server.pid'
 		stdall 'apps/camera-server.log'
 
-		start_command "java -jar -Xmx64m apps/camera --driver OPENNI2 --device-id 0 --format rgb --output camera0 --stream"
+		start_command "java -jar -Xmx64m apps/camera --driver OPENNI2 --device-id 0 --format rgb --output camera0 --stream --depth-camera"
         depend_on :redis
         check :cpu, every: 30, below: 80
         check :memory, every: 30, below: 120.megabytes
@@ -47,7 +47,7 @@ Eye.application :dev02 do
 		pid_file 'apps/pose-server.pid'
 		stdall 'apps/pose-server.log'
 
-		start_command "java -jar -Xmx64m apps/pose-estimator --input camera0 --output camera0:pose --marker-configuration apps/calib1.svg --camera-configuration apps/calibration-AstraS-rgb.yaml --stream"
+		start_command "java -jar -Xmx64m apps/pose-estimator --input camera0 --output sheet:pose --marker-configuration apps/chili1.svg --camera-configuration apps/calibration-AstraS-rgb.yaml --stream"
 		depend_on :chilitags
     end
 
