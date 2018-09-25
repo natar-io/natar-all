@@ -40,27 +40,26 @@ Eye.application :nectar_papart_dev do
                 # apps/chilitags-server	--input camera0 --output camera0:markers --camera-parameters camera0 --stream
 	end
 
-
         process :calib do
           pid_file 'apps/calib-chili.pid'
           stdall 'apps/calib-chili.pid'
-
           start_command "apps/chilitags-server -i projector0 -o projector0:markers -s --camera-parameters projector0"
+        end
 
-
-	  process :aruco do
-		pid_file 'apps/aruco.pid'
-		stdall 'apps/aruco.log'
-		start_command "apps/aruco-server 
-					--input camera0 
-					--output camera0:markers 
-					--camera-parameters camera0 
-					--stream"
+	process :aruco do
+          daemonize true
+	  pid_file 'apps/aruco.pid'
+	  stdall 'apps/aruco.log'
+	  start_command "apps/aruco-server 
+	  		--input camera0 
+			--output camera0:markers 
+			--camera-parameters camera0 
+			--stream"
 	end
 
 
-	process :artoolkit do
-	 daemonize true
+	  process :artoolkit do
+	    daemonize true
 		pid_file 'apps/artoolkit.pid'
 		stdall 'apps/artoolkit.log'
 
