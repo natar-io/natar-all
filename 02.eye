@@ -32,6 +32,18 @@ Eye.application :dev02 do
 #        check :memory, every: 30, below: 200.megabytes
     end
 
+    process :camera_online do
+        daemonize true
+        pid_file 'apps/camera-server.pid'
+#		stdall 'apps/camera-server.log'
+
+		start_command "java -jar -Xmx128m apps/camera-server.jar --driver OPENNI2 --device-id 0 --format rgb --output camera0 --stream --depth-camera "
+        depend_on :redis
+#        check :cpu, every: 30, below: 80
+#        check :memory, every: 30, below: 200.megabytes
+    end
+
+    
     process :calibration_nectar do
         daemonize true
         pid_file 'apps/calibration-server.pid'
