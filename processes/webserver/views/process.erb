@@ -1,0 +1,56 @@
+
+
+
+Content of the document......
+
+
+     <div class="panel panel-primary">
+        <div class="panel-heading">GET Request</div>
+        <div class="panel-body">
+          <button class="btn btn-primary" onclick="getProcess1()">Get Todos</button>
+          <button class="btn btn-warning" onclick="clearOutput()">Clear</button>
+
+	  <p> 
+	  <div class="panel-body" id="process1">
+
+	    <p v-if=content.subtree >
+
+	      <b-table striped hover :items="services()">
+
+		<!-- A custom formatted column -->
+		<template slot="name" slot-scope="data">
+		  {{data.value}} 
+		</template>
+
+		<template slot="resources" slot-scope="data">
+		  cpu: {{ data.value.cpu }}
+		  memory: {{ data.value.memory }}
+		  pid: {{ data.value.pid }}
+		  start: {{ data.value.start_time }} 
+		</template>
+
+		
+		
+	      </b-table>
+
+	      <!-- Name: {{ content.subtree[0].name }},  -->
+	      <!-- state: {{ content.subtree[0].state }},  -->
+	      <!-- type: {{ content.subtree[0].type }} -->
+
+	      <!-- CPU: {{ content.subtree[0].resources.cpu }},  -->
+	      <!-- Memory: {{ content.subtree[0].resources.memory / 1000000 }} Mb,  -->
+	      <!-- PID: {{ content.subtree[0].resources.pid }}, -->
+	      <!-- Start: {{ content.subtree[0].resources.start_time }} -->
+
+	    <!-- <div class="progress"> -->
+	    <!--   <div class="progress-bar" role="progressbar" v-bind:style=' "width: "+ content.subtree[0].resources.cpu + "%;"' v-bind:aria-valuenow="content.subtree[0].resources.cpu" aria-valuemin="0" aria-valuemax="100"></div> -->
+
+
+	    </p>
+	    </div>	    
+
+	  </div>
+        </div>
+      </div>
+
+
