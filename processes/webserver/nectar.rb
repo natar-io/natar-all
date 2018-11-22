@@ -3,11 +3,12 @@ require 'sinatra'
 require 'json'
 
 get '/nectar/service/:name/:action' do
-  "Nectar service: #{params[:name]} do: #{params[:action]}!"
+#  "Nectar service: #{params[:name]} do: #{params[:action]}!"
+
+  `eye #{params[:action]} #{params[:name]}`
 end
 
-
-get '/test' do
+get '/nectar/services' do
   @toto = "Hello1 "
   erb :process, :layout => :main
 end
@@ -18,10 +19,6 @@ get '/nectar/info/:name' do
   `eye i #{params[:name]} -j`
 end
 
-
-get '/nectar/info/:name' do
-  `eye i #{params[:name]} -j`
-end
 
 get '/nectar/camera/:action' do
 

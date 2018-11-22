@@ -1,56 +1,83 @@
 
 
+<div class="panel panel-primary">
+  <div class="panel-body">
+    <button class="btn btn-primary" onclick="getProcess1()">Update processes</button>
 
-Content of the document......
+    <div class="panel-body" id="process1">
+	<b-alert :show="dismissCountDown"
+		 dismissible
+		 variant="warning"
+		 @dismissed="dismissCountDown=0"
+		 @dismiss-count-down="countDownChanged">
+	  {{ alert_text }}   <small> {{dismissCountDown}} s. </small>
+	</b-alert>
+	
+	<div v-if=content.subtree >
+	  <b-table striped hover :fields="fields" :items="services()">
 
+	    <!-- A custom formatted column -->
+	    <template slot="name" slot-scope="data">
+	      {{data.value}} 
+	    </template>
 
-     <div class="panel panel-primary">
-        <div class="panel-heading">GET Request</div>
-        <div class="panel-body">
-          <button class="btn btn-primary" onclick="getProcess1()">Get Todos</button>
-          <button class="btn btn-warning" onclick="clearOutput()">Clear</button>
+	    <template slot="start" slot-scope="data">
+	      <b-button-group>
+		<b-button v-if="services()[data.index].state != 'unmonitored'" class="btn btn-warning" v-on:click="sendServiceCommand(data.index, 'stop')">stop</b-button>
+		
+		
+		<b-button v-else class="btn"  v-on:click="sendServiceCommand(data.index, 'start')" >
+		  start</b-button>
+		<b-button class="btn btn-info" v-on:click="sendServiceCommand(data.index, 'restart')">
+		  restart </b-button>
+	      </b-button-group>
+	    </template>
+	    
+	    <template slot="resources" slot-scope="data">
 
-	  <p> 
-	  <div class="panel-body" id="process1">
-
-	    <p v-if=content.subtree >
-
-	      <b-table striped hover :items="services()">
-
-		<!-- A custom formatted column -->
-		<template slot="name" slot-scope="data">
-		  {{data.value}} 
-		</template>
-
-		<template slot="resources" slot-scope="data">
-		  cpu: {{ data.value.cpu }}
-		  memory: {{ data.value.memory }}
+	      <ul v-if="services()[data.index].state == 'up'" >
+		<li>
+		  cpu: {{ parseFloat(data.value.cpu).toFixed(3) + " %"}}
+		</li>
+		<li>
+		  memory: {{ (data.value.memory / 1000000).toFixed(2) + " mb" }}
+		</li>
+		<li>
 		  pid: {{ data.value.pid }}
-		  start: {{ data.value.start_time }} 
-		</template>
+		</li>
+	      </ul>
+	    </template>
+	    
+	  </b-table>
 
-		
-		
-	      </b-table>
+	  <b-alert :show="dismissCountDown"
+		   dismissible
+		   fade
+		   variant="warning"
+		   @dismissed="dismissCountDown=0"
+		   @dismiss-count-down="countDownChanged">
+	    {{ alert_text }}   <small> {{dismissCountDown}} s. </small>
+	  </b-alert>
 
-	      <!-- Name: {{ content.subtree[0].name }},  -->
-	      <!-- state: {{ content.subtree[0].state }},  -->
-	      <!-- type: {{ content.subtree[0].type }} -->
+	  <!-- Name: {{ content.subtree[0].name }},  -->
+	  <!-- state: {{ content.subtree[0].state }},  -->
+	  <!-- type: {{ content.subtree[0].type }} -->
 
-	      <!-- CPU: {{ content.subtree[0].resources.cpu }},  -->
-	      <!-- Memory: {{ content.subtree[0].resources.memory / 1000000 }} Mb,  -->
-	      <!-- PID: {{ content.subtree[0].resources.pid }}, -->
-	      <!-- Start: {{ content.subtree[0].resources.start_time }} -->
+	  <!-- CPU: {{ content.subtree[0].resources.cpu }},  -->
+	  <!-- Memory: {{ content.subtree[0].resources.memory / 1000000 }} Mb,  -->
+	  <!-- PID: {{ content.subtree[0].resources.pid }}, -->
+	  <!-- Start: {{ content.subtree[0].resources.start_time }} -->
 
-	    <!-- <div class="progress"> -->
+	  <!-- <div class="progress"> -->
 	    <!--   <div class="progress-bar" role="progressbar" v-bind:style=' "width: "+ content.subtree[0].resources.cpu + "%;"' v-bind:aria-valuenow="content.subtree[0].resources.cpu" aria-valuemin="0" aria-valuemax="100"></div> -->
 
 
-	    </p>
-	    </div>	    
 
-	  </div>
-        </div>
+	  </div>	    
+	</div>	    
+
       </div>
+  </div>
+</div>
 
 
