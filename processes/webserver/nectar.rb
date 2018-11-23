@@ -14,6 +14,10 @@ get '/nectar/services' do
   erb :process, :layout => :main
 end
 
+get '/nectar/redis' do
+  erb :redis, :layout => :main
+end
+
 
 ## API
 
