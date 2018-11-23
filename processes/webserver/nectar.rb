@@ -2,15 +2,33 @@
 require 'sinatra'
 require 'json'
 
-get '/nectar/service/:name/:action' do
-#  "Nectar service: #{params[:name]} do: #{params[:action]}!"
 
-  `eye #{params[:action]} #{params[:name]}`
-end
+## WEB
+require 'redis'
+
+
+$redis = Redis.new
 
 get '/nectar/services' do
   @toto = "Hello1 "
   erb :process, :layout => :main
+end
+
+
+## API
+
+get '/nectar/service/:name/:action' do
+  `eye #{params[:action]} #{params[:name]}`
+end
+
+
+## GET/SET API
+get '/nectar/redis/get/:key' do
+  $redis.get(params[:key])
+end
+
+get '/nectar/redis/set/:key' do
+  $redis.set(params[:key], params[:value])
 end
 
 
@@ -20,29 +38,27 @@ get '/nectar/info/:name' do
 end
 
 
-get '/nectar/camera/:action' do
-
-  `eye start camera` if params[:action].eql? "start"
-  if params[:action].eql? "info"
-    info = JSON.parse `eye i -j` 
-    info.to_s
-  end
+## Load all configurations...
+get '/nectar/load_configuration' do
+  `apps/load-configuration-from-sketchbook.sh`
 end
- 
 
-# `eye start camera` if request.include? "/nectar/camera0/start"
-# `eye stop camera` if request.include? "/nectar/camera0/stop"
-# `eye restart camera` if request.include? "/nectar/camera0/restart"
-# `eye start camera_test` if request.include? "/nectar/camera0/test"
+
+## Shortcuts - camera0 
+
+get '/nectar/camera0/:action' do
+  if params[:action] == "test"
+    return `java -jar -Xmx64m apps/camera-server-test.jar --input camera0`
+  end
+
+  if params[:action] == "status"
+    j = JSON.parse `eye info camera -j`
+    return j["subtree"][0]["state"]
+  end 
+  `eye #{params[:action]} camera`
+
+end
+
+
+## Used where ?
 # `eye start camera_intrinsics` if request.include? "/nectar/camera0/intrinsics"
-# cameraStatus =  `eye i camera`
-# intrinsicsStatus = `eye i camera_intrinsics`
-
-
-# session.print "HTTP/1.1 200\r\n"
-# session.print "Content-Type: text/html\r\n"
-# session.print "\r\n"
-
-# session.print cameraStatus.to_s
-# session.print "<br/>"
-# session.print intrinsicsStatus.to_s
