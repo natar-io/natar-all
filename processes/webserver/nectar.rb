@@ -1,7 +1,7 @@
 # coding: utf-8
 require 'sinatra'
 require 'json'
-
+require 'base64'
 
 ## WEB
 require 'redis'
@@ -28,7 +28,14 @@ end
 
 ## GET/SET API
 get '/nectar/redis/get/:key' do
+
+  return Base64.encode64($redis.get(params[:key])) if params[:key] == "camera0"
+  
   $redis.get(params[:key])
+
+  
+
+
 end
 
 get '/nectar/redis/set/:key' do
