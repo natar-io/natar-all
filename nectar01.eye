@@ -1,4 +1,4 @@
-Eye.application :dev02 do
+Eye.application :nectar_core do
     auto_start false
 	working_dir File.expand_path(File.join(File.dirname(__FILE__), %w[ processes ]))
 
