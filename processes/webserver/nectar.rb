@@ -19,8 +19,7 @@ get '/nectar/redis' do
 end
 
 
-## API
-
+## EYE command API
 get '/nectar/service/:name/:action' do
   `eye #{params[:action]} #{params[:name]}`
 end
@@ -29,13 +28,11 @@ end
 ## GET/SET API
 get '/nectar/redis/get/:key' do
 
+  ## Camera DATA is encoded in Base64 for rendering in the browser.
   return Base64.encode64($redis.get(params[:key])) if params[:key] == "camera0"
-  
+
+  ## render the key as text 
   $redis.get(params[:key])
-
-  
-
-
 end
 
 get '/nectar/redis/set/:key' do
@@ -49,9 +46,18 @@ get '/nectar/info/:name' do
 end
 
 
-## Load all configurations...
+
 get '/nectar/load_configuration' do
-  `apps/load-configuration-from-sketchbook.sh`
+
+  file = params[:file]
+  output = params[:output]
+  type = params[:type]
+
+  #### Markerboard
+  ## http://localhost:4567/nectar/load_configuration?file=data/calib1.svg&output=calib1&type=mb
+  ## http://localhost:4567/nectar/load_configuration?file=data/calibration-AstraS-rgb.yaml&output=camera0:calibration&type=mb
+
+  `java -cp apps/apps.jar tech.lity.rea.nectar.ConfigurationLoader -f "#{file}" -o "#{output}" -#{type}`
 end
 
 
