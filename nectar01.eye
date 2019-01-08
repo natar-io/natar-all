@@ -75,14 +75,18 @@ Eye.application :nectar_core do
         check :memory, every:10, below: 200.megabytes
     end
 
-        
+    #  java -cp MyJar.jar com.mycomp.myproj.AnotherClassWithMainMethod
+
     process :pose do
         daemonize true
 		pid_file 'apps/pose-server.pid'
 #		stdall 'apps/pose-server.log'
-		start_command "java -jar -Xmx64m apps/pose-estimator.jar --input camera0 --output sheet:pose --marker-configuration apps/chili1.svg --camera-configuration apps/calibration-AstraS-rgb.yaml --stream"
+		start_command "java -Xmx64m -cp 'apps/apps-lite.jar:apps/deps.jar' tech.lity.rea.nectar.MultiPoseEstimator --input camera0"
+                # java -Xmx64m -cp 'apps/apps-lite.jar:apps/deps.jar' tech.lity.rea.nectar.MultiPosetimator --input camera0
+                
+                ## start_command "java -Xmx64m -cp  apps/pose-estimator.jar --input camera0 --output sheet:pose --marker-configuration apps/chili1.svg --camera-configuration apps/calibration-AstraS-rgb.yaml --stream"
  
-		depend_on :chilitags
+#		depend_on :chilitags
     end
 
     process :camera_test do 
