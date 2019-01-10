@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("${pkgname%-git}::git+ssh://git@github.com/chili-epfl/chilitags.git")
+source=("${pkgname%-git}::git+https://git@github.com/chili-epfl/chilitags.git")
 md5sums=('SKIP')
 
 pkgver() {
