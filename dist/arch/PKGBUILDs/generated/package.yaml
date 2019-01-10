@@ -1,0 +1,8 @@
+jedis:
+  name: jedis
+  groupid: redis.clients
+  version: 2.9.0
+commons-pool2:
+  name: commons-pool2-2
+  groupid: org.apache.commons
+  version: 2.4.2
