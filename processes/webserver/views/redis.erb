@@ -1,5 +1,6 @@
 
 
+
 <button  onClick="sketch1.loadRedisImage()"  class="btn btn-primary">Get Camera0 Image</button>
 
 <div class="panel panel-primary">
@@ -10,8 +11,6 @@
     <div id="redis">
       <b-card no-body>
 	<b-tabs pills card>
-
-	  
 	  <b-tab title="Tab 1" active>
 	    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
 	      <b-form-group id="exampleInputGroup1"
@@ -43,3 +42,8 @@
 </div>
 
 
+
+
+<script>
+var sketch1 = new p5(sketch, 'p5_test');
+</script>

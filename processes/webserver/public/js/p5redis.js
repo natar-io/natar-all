@@ -1,8 +1,6 @@
 
 
-
 var sketch = function(p) {
-
     var img = null;
     
     p.setup = function(){
@@ -71,6 +69,3 @@ var sketch = function(p) {
     }
     
 };
-
-
-var sketch1 = new p5(sketch, 'p5_test');
