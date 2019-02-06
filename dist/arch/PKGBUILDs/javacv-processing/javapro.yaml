@@ -1,0 +1,101 @@
+---
+videoinput-platform:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: videoinput-platform
+  version: 0.200-1.4
+javacv:
+  groupid: org.bytedeco
+  artifactid: javacv
+  version: '1.4'
+javacv-platform:
+  groupid: org.bytedeco
+  artifactid: javacv-platform
+  version: '1.4'
+ffmpeg-platform:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: ffmpeg-platform
+  version: 3.4.1-1.4
+flycapture:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: flycapture
+  version: linux-x86_64
+libdc1394:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: libdc1394
+  version: 2.2.5-1.4
+libfreenect:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: libfreenect
+  version: linux-x86_64
+flandmark:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: flandmark
+  version: linux-x86_64
+flycapture-platform:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: flycapture-platform
+  version: 2.11.3.121-1.4
+libdc1394-platform:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: libdc1394-platform
+  version: 2.2.5-1.4
+artoolkitplus-platform:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: artoolkitplus-platform
+  version: 2.3.1-1.4
+artoolkitplus:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: artoolkitplus
+  version: linux-x86_64
+libfreenect2:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: libfreenect2
+  version: 0.2.0-1.4
+libfreenect2-platform:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: libfreenect2-platform
+  version: 0.2.0-1.4
+core:
+  groupid: org.processing
+  artifactid: core
+  version: 3.3.7
+opencv:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: opencv
+  version: linux-x86_64
+opencv-platform:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: opencv-platform
+  version: 3.4.0-1.4
+ffmpeg:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: ffmpeg
+  version: 3.4.1-1.4
+librealsense-platform:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: librealsense-platform
+  version: 1.12.1-1.4
+flandmark-platform:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: flandmark-platform
+  version: 1.07-1.4
+librealsense:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: librealsense
+  version: 1.12.1-1.4
+toxiclibscore:
+  groupid: org.clojars.hozumi
+  artifactid: toxiclibscore
+  version: '0022'
+videoinput:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: videoinput
+  version: 0.200-1.4
+libfreenect-platform:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: libfreenect-platform
+  version: 0.5.3-1.4
+javacpp:
+  groupid: org.bytedeco
+  artifactid: javacpp
+  version: '1.4'
