@@ -9,3 +9,8 @@ repose -z natar
 [natar]
 SigLevel = Optional TrustAll
 Server = file:///home/jiii/nectar/dist/arch
+
+## Build PKGs
+https://github.com/Rea-lity-Tech/MavenToPKGBUILD
+
+pkg-maven javacv org.bytedeco 1.4
