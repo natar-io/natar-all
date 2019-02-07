@@ -1,0 +1,201 @@
+---
+javacv-platform:
+  groupid: org.bytedeco
+  artifactid: javacv-platform
+  version: '1.4'
+javassist:
+  groupid: org.javassist
+  artifactid: javassist
+  version: 3.18.2-GA
+gluegen-rt:
+  groupid: org.jogamp.gluegen
+  artifactid: gluegen-rt
+  version: 2.3.2
+nectar-detections:
+  groupid: tech.lity.rea
+  artifactid: nectar-detections
+  version: 0.1-SNAPSHOT
+flandmark:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: flandmark
+  version: windows-x86
+ffmpeg:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: ffmpeg
+  version: 3.4.1-1.4
+jogl-all:
+  groupid: org.jogamp.jogl
+  artifactid: jogl-all
+  version: 2.3.2
+libfreenect:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: libfreenect
+  version: windows-x86
+artoolkitplus-platform:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: artoolkitplus-platform
+  version: 2.3.1-1.4
+libfreenect2-platform:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: libfreenect2-platform
+  version: 0.2.0-1.4
+artoolkitplus:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: artoolkitplus
+  version: android-x86
+opencv:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: opencv
+  version: windows-x86
+libfreenect2:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: libfreenect2
+  version: macosx-x86_64
+flycapture:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: flycapture
+  version: 2.11.3.121-1.4
+junit:
+  groupid: junit
+  artifactid: junit
+  version: '4.7'
+libdc1394:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: libdc1394
+  version: windows-x86
+flandmark-platform:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: flandmark-platform
+  version: 1.07-1.4
+toxiclibscore:
+  groupid: org.clojars.hozumi
+  artifactid: toxiclibscore
+  version: '0022'
+commons-pool2:
+  groupid: org.apache.commons
+  artifactid: commons-pool2
+  version: 2.4.2
+librealsense:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: librealsense
+  version: linux-x86_64
+pca_transform:
+  groupid: com.mkobos
+  artifactid: pca_transform
+  version: 1.0.2
+javacv:
+  groupid: org.bytedeco
+  artifactid: javacv
+  version: '1.4'
+ffmpeg-platform:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: ffmpeg-platform
+  version: 3.4.1-1.4
+SVGExtended:
+  groupid: tech.lity.rea
+  artifactid: SVGExtended
+  version: 3.3.7.3
+jogl:
+  groupid: org.jogamp.jogl
+  artifactid: jogl
+  version: 2.3.2
+libdc1394-platform:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: libdc1394-platform
+  version: 2.2.5-1.4
+commons-exec:
+  groupid: org.apache.commons
+  artifactid: commons-exec
+  version: '1.3'
+http-request:
+  groupid: com.github.kevinsawicki
+  artifactid: http-request
+  version: '6.0'
+javacv-processing:
+  groupid: tech.lity.rea
+  artifactid: javacv-processing
+  version: 0.1-SNAPSHOT
+skatolo:
+  groupid: tech.lity.rea
+  artifactid: skatolo
+  version: '1.1'
+annotations:
+  groupid: com.google.code.findbugs
+  artifactid: annotations
+  version: 2.0.1
+flycapture-platform:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: flycapture-platform
+  version: 2.11.3.121-1.4
+ColorConverter:
+  groupid: tech.lity.rea
+  artifactid: ColorConverter
+  version: '0.1'
+videoinput:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: videoinput
+  version: 0.200-1.4
+opencv-platform:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: opencv-platform
+  version: 3.4.0-1.4
+jama:
+  groupid: gov.nist.math
+  artifactid: jama
+  version: 1.0.2
+jedis:
+  groupid: redis.clients
+  artifactid: jedis
+  version: 2.9.0
+librealsense-platform:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: librealsense-platform
+  version: 1.12.1-1.4
+core:
+  groupid: org.processing
+  artifactid: core
+  version: 3.3.6
+videoinput-platform:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: videoinput-platform
+  version: 0.200-1.4
+ProcessingTUIO:
+  groupid: fr.inria.potioc
+  artifactid: ProcessingTUIO
+  version: 1.1.0
+nectar-configuration:
+  groupid: tech.lity.rea
+  artifactid: nectar-configuration
+  version: 0.1-SNAPSHOT
+SimplePointCloud:
+  groupid: tech.lity.rea
+  artifactid: SimplePointCloud
+  version: '0.1'
+guava:
+  groupid: com.google.guava
+  artifactid: guava
+  version: '15.0'
+nectar-core:
+  groupid: tech.lity.rea
+  artifactid: nectar-core
+  version: 0.1-SNAPSHOT
+gluegen-rt-main:
+  groupid: org.jogamp.gluegen
+  artifactid: gluegen-rt-main
+  version: 2.3.2
+libfreenect-platform:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: libfreenect-platform
+  version: 0.5.3-1.4
+reflections:
+  groupid: org.reflections
+  artifactid: reflections
+  version: 0.9.9
+javacpp:
+  groupid: org.bytedeco
+  artifactid: javacpp
+  version: '1.4'
+oscp5:
+  groupid: org.clojars.frederikdb
+  artifactid: oscp5
+  version: 0.9.8
