@@ -14,3 +14,6 @@ Server = file:///home/jiii/nectar/dist/arch
 https://github.com/Rea-lity-Tech/MavenToPKGBUILD
 
 pkg-maven javacv org.bytedeco 1.4
+
+## Get a complete repository
+pacman -S `pacman -Slq natar`
