@@ -151,10 +151,10 @@ librealsense-platform:
   groupid: org.bytedeco.javacpp-presets
   artifactid: librealsense-platform
   version: 1.12.1-1.4
-core:
+processing-core:
   groupid: org.processing
   artifactid: core
-  version: 3.3.6
+  version: 3.3.7
 videoinput-platform:
   groupid: org.bytedeco.javacpp-presets
   artifactid: videoinput-platform
