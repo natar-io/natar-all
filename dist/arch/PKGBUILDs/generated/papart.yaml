@@ -163,9 +163,21 @@ ProcessingTUIO:
   groupid: fr.inria.potioc
   artifactid: ProcessingTUIO
   version: 1.1.0
-nectar-configuration:
+nectar-detections:
   groupid: tech.lity.rea
-  artifactid: nectar-configuration
+  artifactid: nectar-detections
+  version: 0.1
+nectar-apps:
+  groupid: tech.lity.rea
+  artifactid: nectar-apps
+  version: 0.1
+nectar-camera-server:
+  groupid: tech.lity.rea
+  artifactid: nectar-camera-server
+  version: 0.1
+nectar-camera-server-test:
+  groupid: tech.lity.rea
+  artifactid: nectar-camera-server-test
   version: 0.1
 SimplePointCloud:
   groupid: tech.lity.rea
@@ -199,3 +211,67 @@ oscp5:
   groupid: org.clojars.frederikdb
   artifactid: oscp5
   version: 0.9.8
+jna-platform:
+  groupid: net.java.dev.jna
+  artifactid: platform
+  version: 3.4.0
+jna:
+  groupid: net.java.dev.jna
+  artifactid: jna
+  version: 4.0.0 
+lettuce-core:
+  groupid: io.lettuce
+  artifactid: lettuce-core
+  version: 5.1.3.RELEASE
+netty-handler:
+  groupid: io.netty
+  artifactid: netty-handler
+  version: 4.1.31.Final
+netty-transport:
+  groupid: io.netty
+  artifactid: netty-transport
+  version: 4.1.31.Final
+netty-resolver:
+  groupid: io.netty
+  artifactid: netty-resolver
+  version: 4.1.31.Final
+OpenNI:
+  groupid: org.openni
+  artifactid: OpenNI
+  version: 2.3.1
+netty-common:
+  groupid: io.netty
+  artifactid: netty-common
+  version: 4.1.31.Final
+netty-buffer:
+  groupid: io.netty
+  artifactid: netty-buffer
+  version: 4.1.31.Final
+libfreenect:
+  groupid: org.bytedeco.javacpp-presets
+  artifactid: libfreenect
+  version: linux-x86_64
+commons-pool2:
+  groupid: org.apache.commons
+  artifactid: commons-pool2
+  version: 2.4.2
+AppleJavaExtensions:
+  groupid: com.apple
+  artifactid: AppleJavaExtensions
+  version: '1.4'
+netty-codec:
+  groupid: io.netty
+  artifactid: netty-codec
+  version: 4.1.31.Final
+reactive-streams:
+  groupid: org.reactivestreams
+  artifactid: reactive-streams
+  version: 1.0.2
+reactor-core:
+  groupid: io.projectreactor
+  artifactid: reactor-core
+  version: 3.2.3.RELEASE
+swt-gtk-x86_64:
+  groupid: org.eclipse.swt.gtk.linux
+  artifactid: x86_64
+  version: 3.3.0-v3346
