@@ -14,7 +14,7 @@ gluegen-rt:
 nectar-detections:
   groupid: tech.lity.rea
   artifactid: nectar-detections
-  version: 0.1-SNAPSHOT
+  version: 0.1
 flandmark:
   groupid: org.bytedeco.javacpp-presets
   artifactid: flandmark
@@ -114,7 +114,7 @@ http-request:
 javacv-processing:
   groupid: tech.lity.rea
   artifactid: javacv-processing
-  version: 0.1-SNAPSHOT
+  version: 0.1
 skatolo:
   groupid: tech.lity.rea
   artifactid: skatolo
@@ -166,7 +166,7 @@ ProcessingTUIO:
 nectar-configuration:
   groupid: tech.lity.rea
   artifactid: nectar-configuration
-  version: 0.1-SNAPSHOT
+  version: 0.1
 SimplePointCloud:
   groupid: tech.lity.rea
   artifactid: SimplePointCloud
@@ -178,7 +178,7 @@ guava:
 nectar-core:
   groupid: tech.lity.rea
   artifactid: nectar-core
-  version: 0.1-SNAPSHOT
+  version: 0.1
 gluegen-rt-main:
   groupid: org.jogamp.gluegen
   artifactid: gluegen-rt-main
