@@ -251,10 +251,6 @@ libfreenect:
   groupid: org.bytedeco.javacpp-presets
   artifactid: libfreenect
   version: linux-x86_64
-commons-pool2:
-  groupid: org.apache.commons
-  artifactid: commons-pool2
-  version: 2.4.2
 AppleJavaExtensions:
   groupid: com.apple
   artifactid: AppleJavaExtensions
@@ -275,3 +271,8 @@ swt-gtk-x86_64:
   groupid: org.eclipse.swt.gtk.linux
   artifactid: x86_64
   version: 3.3.0-v3346
+commons-cli:
+  groupid: commons-cli
+  artifactid: commons-cli
+  version: '1.4'
+
