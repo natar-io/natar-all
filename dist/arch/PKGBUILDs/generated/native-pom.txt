@@ -1,0 +1,8 @@
+replace in the pom:
+
+<version>natives-...</version>
+
+with:
+
+<version>2.3.2</version>
+	<classifier>natives-linux-amd64</classifier>
