@@ -55,10 +55,21 @@ get '/nectar/load_configuration' do
 
   #### Markerboard
   ## http://localhost:4567/nectar/load_configuration?file=data/calib1.svg&output=calib1&type=mb
-  ## http://localhost:4567/nectar/load_configuration?file=data/calibration-AstraS-rgb.yaml&output=camera0:calibration&type=mb
+  
+  ## http://localhost:4567/nectar/load_configuration?file=data/calibration-AstraS-rgb.yaml&output=camera0:calibration&type=pd
+  ## http://localhost:4567/nectar/load_configuration?file=data/calibration-AstraS-depth.yaml&output=camera0:calibration:depth&type=pd
 
-  `java -cp apps/apps.jar tech.lity.rea.nectar.ConfigurationLoader -f "#{file}" -o "#{output}" -#{type}`
+
+  ## http://localhost:4567/nectar/load_configuration?file=data/A4-default-aruco.svg&output=A4-aruco&type=mb
+
+  cp = File.read "apps/apps.txt"
+  `java -cp "#{cp}:apps/apps.jar" tech.lity.rea.nectar.apps.ConfigurationLoader -f "#{file}" -o "#{output}" -#{type}`
 end
+
+
+  # cp = File.read "apps/apps.txt"
+  # `java -cp "#{cp}:apps/apps.jar" tech.lity.rea.nectar.apps.ConfigurationLoader -f "#{file}" -o "#{output}" -#{type}`
+
 
 
 ## Shortcuts - camera0 

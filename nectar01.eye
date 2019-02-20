@@ -70,10 +70,10 @@ Eye.application :nectar_core do
   process :artoolkit do
     daemonize true
     pid_file 'apps/artoolkit-server.pid'
-    #        stdall   'apps/chilitags-server.log'
+#    stdall   'apps/artoolkit-server.log'
 
-    start_command "apps/artk-server --input camera0 --output camera0:markers --camera-parameters camera0 --stream"
-    depend_on :camera
+    start_command "apps/artk-server --input camera0 --output camera0:markers --camera-parameters camera0 --stream -v"
+#     depend_on :camera
     check :memory, every:10, below: 200.megabytes
   end
 
@@ -99,7 +99,7 @@ Eye.application :nectar_core do
     start_command "apps/run-camera-test.sh"
     use_leaf_child true
     
-    depend_on :camera
+#    depend_on :camera
   end
 
   ## Will get outside of EYE soon
