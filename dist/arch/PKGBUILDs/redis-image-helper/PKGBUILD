@@ -1,7 +1,7 @@
 # Maintainer: Your Name <laviole@rea.lity.tech>
 pkgname=libnatar-redis-image-git
 pkgver=r24.27d83c9
-pkgrel=3
+pkgrel=5
 pkgdesc="Image helper for Natar, C++ library."
 arch=('x86_64')
 url=""
@@ -35,8 +35,7 @@ pkgver() {
 build() {
   cd "$srcdir/${pkgname%-git}"  
   mkdir -p build ; cd build
-  cmake -DCMAKE_INSTALL_LIBDIR=lib ..
-  
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
   make 
 }
 

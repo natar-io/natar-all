@@ -1,7 +1,7 @@
 # Maintainer: Your Name <laviole@rea.lity.tech>
 pkgname=chilitags-git
 pkgver=2.0.0.r169.0d9854f
-pkgrel=1
+pkgrel=3
 pkgdesc="Robust Fiducial Markers for Augmented Reality And Robotics."
 arch=('x86_64')
 url=""
@@ -30,8 +30,7 @@ pkgver() {
 build() {
   cd "$srcdir/${pkgname%-git}"  
   mkdir -p build ; cd build
-  cmake ..
-  make 
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
 }
 
 package() {
