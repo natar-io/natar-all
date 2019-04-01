@@ -1,7 +1,7 @@
 # Maintainer: Your Name <laviole@rea.lity.tech>
 pkgname=libnatar-redis-image-git
 pkgver=r24.27d83c9
-pkgrel=2
+pkgrel=3
 pkgdesc="Image helper for Natar, C++ library."
 arch=('x86_64')
 url=""
