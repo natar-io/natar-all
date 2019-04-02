@@ -81,7 +81,7 @@ Eye.application :nectar_core do
     daemonize true
     pid_file 'apps/pose-server.pid'
     #stdall 'apps/pose-server.log'
-    start_command "java -Xmx64m -cp 'apps/apps-lite.jar:apps/deps.jar' tech.lity.rea.nectar.MultiPoseEstimator --input camera0"
+    start_command "apps/run-pose-estimator.sh"
     # java -Xmx64m -cp 'apps/apps-lite.jar:apps/deps.jar' tech.lity.rea.nectar.MultiPosetimator --input camera0
     ## start_command "java -Xmx64m -cp  apps/pose-estimator.jar --input camera0 --output sheet:pose --marker-configuration apps/chili1.svg --camera-configuration apps/calibration-AstraS-rgb.yaml --stream"
     #depend_on :chilitags
