@@ -1,7 +1,7 @@
 # Maintainer: Your Name <laviole@rea.lity.tech>
 pkgname=chilitags-detection-server
 pkgver=r4.395cf39
-pkgrel=1
+pkgrel=2
 pkgdesc="Image helper for Natar, C++ library."
 arch=('x86_64')
 url=""
@@ -33,7 +33,7 @@ pkgver() {
 build() {
   cd "$srcdir/${pkgname%-git}"  
   mkdir -p build ; cd build
-  cmake ..
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR=lib ..
   make 
 }
 
