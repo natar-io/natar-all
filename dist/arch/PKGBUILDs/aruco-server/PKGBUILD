@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Laviole <laviole@rea.lity.tech>
 pkgname=aruco-nectar-git
 pkgver=r10.277f625
-pkgrel=1
+pkgrel=2
 pkgdesc="ArUco for Natar - ArUco is a minimal library for Augmented Reality applications based exclusively on OpenCV"
 arch=('x86_64')
 url=""
@@ -29,7 +29,7 @@ pkgver() {
 build() {
   cd "$srcdir/${pkgname%-git}"  
   mkdir -p build ; cd build
-  cmake ..
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR=lib ..
   make 
 }
 
