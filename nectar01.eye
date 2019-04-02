@@ -1,12 +1,12 @@
 Eye.application :nectar_core do
   auto_start false
   working_dir File.expand_path(File.join(File.dirname(__FILE__), %w[ processes ]))
-  
+
   process :redis do
     daemonize true
     pid_file 'redis/db/redis_6379.pid'
     #		stdall 'redis/nectar-redis.log'
-    
+
     start_command "/usr/bin/redis-server redis.conf"
     check :cpu, every: 30, below: 80, times: 3
     check :memory, every: 30, below: 70.megabytes, times: [3, 5]
@@ -21,7 +21,7 @@ Eye.application :nectar_core do
     start_command "ruby webserver/nectar.rb"
     depend_on :redis
   end
-  
+
   process :camera do
     daemonize true
     pid_file 'apps/camera-server.pid'
@@ -30,28 +30,28 @@ Eye.application :nectar_core do
     start_command "apps/run-camera.sh"
     use_leaf_child true
     depend_on :redis
-    #        check :cpu, every: 30, below: 80
-    #        check :memory, every: 30, below: 200.megabytes
+    #check :cpu, every: 30, below: 80
+    #check :memory, every: 30, below: 200.megabytes
   end
 
-  
+
   process :calibration_nectar do
     daemonize true
     pid_file 'apps/calibration-server.pid'
-    #		stdall 'apps/camera-server.log'
+    #stdall 'apps/camera-server.log'
 
     start_command "apps/chilitags-server -i projector0 -o projector0:markers -s -v --camera-parameters projector0"
     depend_on :redis
-    #        check :cpu, every: 30, below: 80
-    #        check :memory, every: 30, below: 200.megabytes
+    #check :cpu, every: 30, below: 80
+    #check :memory, every: 30, below: 200.megabytes
   end
 
   process :chilitags do
     daemonize true
     pid_file 'apps/chilitags-server.pid'
-    #        stdall   'apps/chilitags-server.log'
+    #stdall   'apps/chilitags-server.log'
 
-    start_command "apps/chilitags-server --input camera0 --output camera0:markers --camera-parameters camera0 --stream"
+    start_command "apps/chilitags-server --input camera0 --output camera0:markers --camera-parameters camera0 --stream -g"
     depend_on :camera
     check :memory, every:10, below: 200.megabytes
   end
@@ -59,46 +59,42 @@ Eye.application :nectar_core do
   process :aruco do
     daemonize true
     pid_file 'apps/aruco-server.pid'
-    #        stdall   'apps/chilitags-server.log'
+    #stdall   'apps/chilitags-server.log'
 
-    start_command "apps/aruco-server --input camera0 --output camera0:markers --camera-parameters camera0 --stream"
+    start_command "apps/aruco-server --input camera0 --output camera0:markers --camera-parameters camera0 --stream -g"
     depend_on :camera
     check :memory, every:10, below: 200.megabytes
   end
 
-  
+
   process :artoolkit do
     daemonize true
     pid_file 'apps/artoolkit-server.pid'
-#    stdall   'apps/artoolkit-server.log'
+    #stdall   'apps/artoolkit-server.log'
 
-    start_command "apps/artk-server --input camera0 --output camera0:markers --camera-parameters camera0 --stream -v"
-#     depend_on :camera
+    start_command "apps/artk-server --input camera0 --output camera0:markers --camera-parameters camera0 --stream -g"
+    #depend_on :camera
     check :memory, every:10, below: 200.megabytes
   end
-
-  #  java -cp MyJar.jar com.mycomp.myproj.AnotherClassWithMainMethod
 
   process :pose do
     daemonize true
     pid_file 'apps/pose-server.pid'
-    #		stdall 'apps/pose-server.log'
+    #stdall 'apps/pose-server.log'
     start_command "java -Xmx64m -cp 'apps/apps-lite.jar:apps/deps.jar' tech.lity.rea.nectar.MultiPoseEstimator --input camera0"
     # java -Xmx64m -cp 'apps/apps-lite.jar:apps/deps.jar' tech.lity.rea.nectar.MultiPosetimator --input camera0
-    
     ## start_command "java -Xmx64m -cp  apps/pose-estimator.jar --input camera0 --output sheet:pose --marker-configuration apps/chili1.svg --camera-configuration apps/calibration-AstraS-rgb.yaml --stream"
-    
-    #		depend_on :chilitags
+    #depend_on :chilitags
   end
 
-  process :camera_test do 
+  process :camera_test do
     daemonize true
     pid_file 'apps/camera-test.pid'
     stdall 'apps/camera-test.log'
 
     start_command "apps/run-camera-test.sh"
     use_leaf_child true
-    
+
 #    depend_on :camera
   end
 

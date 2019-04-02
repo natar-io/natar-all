@@ -31,7 +31,7 @@ get '/nectar/redis/get/:key' do
   ## Camera DATA is encoded in Base64 for rendering in the browser.
   return Base64.encode64($redis.get(params[:key])) if params[:key] == "camera0"
 
-  ## render the key as text 
+  ## render the key as text
   $redis.get(params[:key])
 end
 
@@ -41,7 +41,7 @@ end
 
 
 get '/nectar/info/:name' do
-  return `eye i -j` if params[:name] == "all" 
+  return `eye i -j` if params[:name] == "all"
   `eye i #{params[:name]} -j`
 end
 
@@ -55,7 +55,7 @@ get '/nectar/load_configuration' do
 
   #### Markerboard
   ## http://localhost:4567/nectar/load_configuration?file=data/calib1.svg&output=calib1&type=mb
-  
+
   ## http://localhost:4567/nectar/load_configuration?file=data/calibration-AstraS-rgb.yaml&output=camera0:calibration&type=pd
   ## http://localhost:4567/nectar/load_configuration?file=data/calibration-AstraS-depth.yaml&output=camera0:calibration:depth&type=pd
 
@@ -72,7 +72,7 @@ end
 
 
 
-## Shortcuts - camera0 
+## Shortcuts - camera0
 
 get '/nectar/camera0/:action' do
   if params[:action] == "test"
@@ -82,7 +82,7 @@ get '/nectar/camera0/:action' do
   if params[:action] == "status"
     j = JSON.parse `eye info camera -j`
     return j["subtree"][0]["state"]
-  end 
+  end
   `eye #{params[:action]} camera`
 
 end

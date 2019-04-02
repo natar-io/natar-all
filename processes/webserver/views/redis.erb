@@ -1,49 +1,49 @@
-
-
-
 <button  onClick="sketch1.loadRedisImage()"  class="btn btn-primary">Get Camera0 Image</button>
-
-<div class="panel panel-primary">
-  <div class="panel-body">
-
-    <div id='p5_test'></div>
-
-    <div id="redis">
-      <b-card no-body>
-	<b-tabs pills card>
-	  <b-tab title="Tab 1" active>
-	    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-	      <b-form-group id="exampleInputGroup1"
-			    label="Key:"
-			    label-for="exampleInput1"
-			    description="We'll never share your email with anyone else.">
-		<b-form-input id="keyInput"
-			      v-model="form.key"
-			      placeholder="Enter key">
-		</b-form-input>
-
-	      </b-form-group>
-
-	      <b-button type="submit" variant="primary">Get</b-button>
-	      
-	      </b-form>
-
-		{{ response }}
-	    
-	  </b-tab>
-	  <b-tab title="Tab 2">
-	    Tab Contents 2
-	  </b-tab>
-	</b-tabs>
-      </b-card>
-      
+<div class="form-row align-items-center">
+    <div class="col-auto">
+        <label> Preview latency (ms) </label>
+        <input type="number" class="form-control mb-2" id="input-framerate" value="100"/>
     </div>
-  </div>
 </div>
 
+<div class="panel panel-primary">
+    <div class="panel-body">
 
+        <div id='p5_test'></div>
 
+        <div id="redis">
+            <b-card no-body>
+                <b-tabs pills card>
+                    <b-tab title="Tab 1" active>
+                        <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+                            <b-form-group id="exampleInputGroup1"
+                            label="Key:"
+                            label-for="exampleInput1">
+                            <b-form-input id="keyInput"
+                            v-model="form.key"
+                            placeholder="Enter key">
+                        </b-form-input>
+
+                    </b-form-group>
+
+                    <b-button type="submit" variant="primary">Get</b-button>
+
+                </b-form>
+
+                {{ response }}
+
+            </b-tab>
+            <b-tab title="Tab 2">
+                <h1> Tab 2 </h1>
+                Hello world !
+            </b-tab>
+        </b-tabs>
+    </b-card>
+
+</div>
+</div>
+</div>
 
 <script>
-var sketch1 = new p5(sketch, 'p5_test');
+    var sketch1 = new p5(sketch, 'p5_test');
 </script>
