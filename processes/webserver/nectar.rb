@@ -62,7 +62,7 @@ get '/nectar/load_configuration' do
 
   ## http://localhost:4567/nectar/load_configuration?file=data/A4-default-aruco.svg&output=A4-aruco&type=mb
 
-  cp = File.read "apps/apps.txt"
+  cp = File.read "apps/classpaths/apps.txt"
   `java -cp "#{cp}:apps/apps.jar" tech.lity.rea.nectar.apps.ConfigurationLoader -f "#{file}" -o "#{output}" -#{type}`
 end
 
