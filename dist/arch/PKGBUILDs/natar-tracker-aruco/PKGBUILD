@@ -1,5 +1,5 @@
 # Maintainer: Jeremy Laviole <laviole@rea.lity.tech>
-pkgname=natar-natar-tracker-aruco-git
+pkgname=natar-tracker-aruco-git
 pkgver=r11.9a75488
 pkgrel=1
 pkgdesc="An ArUco tracker for Natar."
@@ -11,7 +11,7 @@ makedepends=('cmake' 'git')
 optdepends=('')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-replaces=()
+replaces=('natar-natar-tracker-aruco' 'aruco-nectar')
 backup=()
 options=()
 install=

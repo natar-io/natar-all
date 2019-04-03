@@ -1,8 +1,8 @@
 # Maintainer: Your Name <laviole@rea.lity.tech>
 pkgname=artoolkitplus-git
 pkgver=2.3.1
-pkgrel=1
-pkgdesc="ARToolKitPlus is a computer tracking library for creation of augmented reality applications "
+pkgrel=2
+pkgdesc="A computer tracking library for creation of augmented reality applications "
 arch=('x86_64')
 url=""
 # license=('GPL')
