@@ -1,8 +1,12 @@
 #!/bin/bash
 
-git clone git@forge.pole-aquinetic.net:nectar-platform/aruco-detection-server.git
-cd aruco-detection-server
-git checkout 0.2
-mkdir build ; cd build
-cmake ..
-make
+git clone git@forge.pole-aquinetic.net:nectar-platform/natar-tracker-aruco.git
+cd natar-tracker-aruco
+if [ $? -eq 0 ]; then
+	git checkout master
+	mkdir build ; cd build
+	cmake ..
+	make
+else
+	echo -e "Exiting ..."
+fi
