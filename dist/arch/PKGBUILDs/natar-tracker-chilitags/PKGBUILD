@@ -1,0 +1,37 @@
+# Maintainer: Jeremy Laviole <laviole@rea.lity.tech>
+pkgname=natar-tracker-chilitags-git
+pkgver=r5.0ae0c20
+pkgrel=1
+pkgdesc="A chilitags tracker for Natar."
+arch=('x86_64')
+url=""
+groups=(natar)
+depends=('chilitags-git' 'libev' 'cxxopts' 'rapidjson' 'opencv' 'libnatar-redis-image-git')
+makedepends=('cmake' 'git')
+optdepends=('libcurlpp')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("${pkgname%-git}::git+ssh://git@forge.pole-aquinetic.net/nectar-platform/natar-tracker-chilitags.git")
+md5sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "$srcdir/${pkgname%-git}"
+  mkdir -p build ; cd build
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR=lib ..
+  make
+}
+
+package() {
+  cd "$srcdir/${pkgname%-git}/build"
+  make DESTDIR="$pkgdir/" install
+}
