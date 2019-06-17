@@ -155,21 +155,21 @@ ProcessingTUIO:
   groupid: fr.inria.potioc
   artifactid: ProcessingTUIO
   version: 1.1.0
-nectar-detections:
+natar-detections:
   groupid: tech.lity.rea
-  artifactid: nectar-detections
+  artifactid: natar-detections
   version: 0.1
-nectar-apps:
+natar-apps:
   groupid: tech.lity.rea
-  artifactid: nectar-apps
+  artifactid: natar-apps
   version: 0.1
-nectar-camera-server:
+natar-multi-camera-server:
   groupid: tech.lity.rea
-  artifactid: nectar-camera-server
+  artifactid: natar-multi-camera-server
   version: 0.1
-nectar-camera-server-test:
+natar-camera-client:
   groupid: tech.lity.rea
-  artifactid: nectar-camera-server-test
+  artifactid: natar-camera-client
   version: 0.1
 SimplePointCloud:
   groupid: tech.lity.rea
@@ -179,9 +179,9 @@ guava:
   groupid: com.google.guava
   artifactid: guava
   version: '15.0'
-nectar-core:
+natar-core:
   groupid: tech.lity.rea
-  artifactid: nectar-core
+  artifactid: natar-core
   version: 0.1
 libfreenect-platform:
   groupid: org.bytedeco.javacpp-presets
