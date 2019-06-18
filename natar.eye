@@ -23,7 +23,7 @@ Eye.application :natar_core do
   auto_start false
 
   ## not install
-  # working_dir File.expand_path(File.dirname(__FILE__))
+#  working_dir File.expand_path(File.dirname(__FILE__))
 
   ## Installed
   wd =  "/usr/share/natar-utilities/"
