@@ -1,47 +1,34 @@
-Eye.application :natar_core do
-  auto_start false
-  working_dir File.expand_path(File.join(File.dirname(__FILE__), %w[ processes ]))
+## Note: Redis is now handled by systemd
+## The webadmin is served on port 80 through nginx and unicorn
+## Use the scripts to install redis.conf and nginx.conf 
 
-  process :redis do
+Eye.application :natar_webadmin do
+  auto_start true
+  working_dir "/usr/share/natar-webserver/"
+
+  ## We suppose that nginx runs
+  process :server do
     daemonize true
-    pid_file 'redis/db/redis_6379.pid'
-
-    start_command "/usr/bin/redis-server redis.conf"
-    check :cpu, every: 30, below: 80, times: 3
-    check :memory, every: 30, below: 70.megabytes, times: [3, 5]
-  end
-
-  process :natar_webserver do
-    auto_start true
-    daemonize true
-    pid_file 'apps/natar-webserver.pid'
-    stdall 'apps/natar-webserver.log'
+    pid_file 'tmp/pids/unicorn.pid'
 
     # Set the natar webserver to production so that it loads the local bundle js
     env 'APP_ENV' => 'production'
-    start_command "ruby natar-webserver/natar.rb"
-    depend_on :redis
+#    start_command "ruby natar-webserver/natar.rb"
+    start_command "bundle exec unicorn -c unicorn.rb -E production"
   end
 
-  process :dev_webserver do
-    daemonize true
-    pid_file 'apps/natar-webserver_dev.pid'
-    stdall 'apps/natar-webserver_dev.log'
+end
 
-    # Set the natar webserver to production so that it loads the local bundle js
-    env 'APP_ENV' => 'development'
-    start_command "foreman start -f natar-webserver/Procfile"
-    use_leaf_child true
-    depend_on :redis
-  end
+Eye.application :natar_core do
+  auto_start false
+  working_dir File.expand_path(File.dirname(__FILE__))
 
   process :camera do
     daemonize true
-    pid_file 'apps/camera-server.pid'
+    pid_file 'tmp/camera-server.pid'
 
     start_command "apps/camera-server.sh"
     use_leaf_child true
-    depend_on :redis
 
     check :cpu, every: 30, below: 80
     check :memory, every: 30, below: 250.megabytes
@@ -49,17 +36,16 @@ Eye.application :natar_core do
 
   process :calibration_natar do
     daemonize true
-    pid_file 'apps/calibration-server.pid'
+    pid_file 'tmp/calibration-server.pid'
 
     start_command "apps/chilitags-tracker -i projector0 -o projector0:markers -s -v --camera-parameters projector0"
-    depend_on :redis
     check :cpu, every: 30, below: 80
     check :memory, every: 30, below: 200.megabytes
   end
 
   process :chilitags do
     daemonize true
-    pid_file 'apps/chilitags-tracker.pid'
+    pid_file 'tmp/chilitags-tracker.pid'
 
     start_command "apps/chilitags-tracker --input camera0 --output camera0:chilitags --camera-parameters camera0 --stream -g"
     depend_on :camera
@@ -68,7 +54,7 @@ Eye.application :natar_core do
 
   process :aruco do
     daemonize true
-    pid_file 'apps/aruco-tracker.pid'
+    pid_file 'tmp/aruco-tracker.pid'
 
     start_command "apps/aruco-tracker --input camera0 --output camera0:aruco --camera-parameters camera0 --stream -g"
     depend_on :camera
@@ -78,8 +64,8 @@ Eye.application :natar_core do
 
   process :artoolkitplus do
     daemonize true
-    pid_file 'apps/artoolkitplus-tracker.pid'
-    stdall 'apps/artoolkitplus-tracker.log'
+    pid_file 'tmp/artoolkitplus-tracker.pid'
+    stdall 'tmp/artoolkitplus-tracker.log'
 
     start_command "apps/artoolkitplus-tracker --input camera0 --output camera0:artoolkitplus --camera-parameters camera0
     --calibration-file data/artoolkitplus/no_distortion.cal --markerboard-file data/artoolkitplus/markerboard_480-499.cfg

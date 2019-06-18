@@ -1,6 +1,6 @@
 # Maintainer: Jeremy Laviole <jiii@jiii-mi>
 pkgname=natar-utilities
-pkgver=r112.8843ae6
+pkgver=r92.38a4302
 pkgrel=1
 epoch=
 pkgdesc="Web admistation for your Natar device."
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("${pkgname%-git}::git+ssh://git@forge.pole-aquinetic.net/nectar-platform/utilities.git")
+source=("${pkgname%-git}::git+ssh://git@forge.pole-aquinetic.net/nectar-platform/utilities.git#branch=dist")
 md5sums=('SKIP')
 noextract=()
 
@@ -40,15 +40,25 @@ package() {
   cd "$srcdir/${pkgname%-git}/"
 
   mkdir -p $pkgdir/usr/share/$pkgname
+  mkdir -p $pkgdir/usr/share/$pkgname/tmp
   mkdir -p $pkgdir/etc/
   mkdir -p $pkgdir/usr/bin
 
-  install processes/redis.conf $pkgdir/etc/redis-natar.conf
-
   install Gemfile.lock $pkgdir/usr/share/$pkgname/
   install Gemfile $pkgdir/usr/share/$pkgname/
+
+  cp -r vendor $pkgdir/usr/share/$pkgname/
   install natar.eye $pkgdir/usr/share/$pkgname/  
+  
+  cd processes
+
+  install redis.conf $pkgdir/etc/redis-natar.conf
   cp -r data $pkgdir/usr/share/$pkgname/
   cp -r apps $pkgdir/usr/share/$pkgname/
 
+  chmod -R a+w $pkgdir/usr/share/$pkgname/tmp
+
+  
+
+  
 }
