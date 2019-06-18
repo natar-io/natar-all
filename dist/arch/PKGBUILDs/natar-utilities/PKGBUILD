@@ -1,6 +1,6 @@
 # Maintainer: Jeremy Laviole <jiii@jiii-mi>
 pkgname=natar-utilities
-pkgver=
+pkgver=r112.8843ae6
 pkgrel=1
 epoch=
 pkgdesc="Web admistation for your Natar device."
