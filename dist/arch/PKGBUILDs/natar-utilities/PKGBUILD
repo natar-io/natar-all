@@ -1,0 +1,54 @@
+# Maintainer: Jeremy Laviole <jiii@jiii-mi>
+pkgname=natar-utilities
+pkgver=
+pkgrel=1
+epoch=
+pkgdesc="Web admistation for your Natar device."
+arch=('i686' 'x86_64')
+url=""
+license=('')
+groups=()
+depends=('nginx' 'ruby')
+makedepends=('yarn') ## Webpack
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("${pkgname%-git}::git+ssh://git@forge.pole-aquinetic.net/nectar-platform/utilities.git")
+md5sums=('SKIP')
+noextract=()
+
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "$srcdir/${pkgname%-git}"
+
+  ## Package the gems
+  bundle install --deployment
+
+}
+
+package() {
+  cd "$srcdir/${pkgname%-git}/"
+
+  mkdir -p $pkgdir/usr/share/$pkgname
+  mkdir -p $pkgdir/etc/
+  mkdir -p $pkgdir/usr/bin
+
+  install processes/redis.conf $pkgdir/etc/redis-natar.conf
+
+  install Gemfile.lock $pkgdir/usr/share/$pkgname/
+  install Gemfile $pkgdir/usr/share/$pkgname/
+  install natar.eye $pkgdir/usr/share/$pkgname/  
+  cp -r data $pkgdir/usr/share/$pkgname/
+  cp -r apps $pkgdir/usr/share/$pkgname/
+
+}

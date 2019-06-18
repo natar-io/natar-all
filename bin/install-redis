@@ -1,0 +1,6 @@
+#!/bin/sh
+
+echo "This will replace your /etc/redis.conf. We back it up to /etc/redis.conf.old."
+
+sudo cp /etc/redis.conf /etc/redis.conf.old
+sudo cp /etc/redis/redis-natar.conf /etc/redis.conf
