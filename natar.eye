@@ -21,17 +21,29 @@ end
 
 Eye.application :natar_core do
   auto_start false
-  working_dir File.expand_path(File.dirname(__FILE__))
+
+  ## not install
+  # working_dir File.expand_path(File.dirname(__FILE__))
+
+  ## Installed
+  wd =  "/usr/share/natar-utilities/"
+  working_dir "/usr/share/natar-utilities/"
 
   process :camera do
-    daemonize true
+    daemonize false
+    
+    ### Problem: The program should be able to output its PID"
     pid_file 'tmp/camera-server.pid'
+        
+    cp = (File.read wd+"apps/classpaths/apps.txt").strip
+    env "CLASSPATH" => cp
+    start_command "java -Xmx128m tech.lity.rea.nectar.camera.CameraServerImpl --driver OPENNI2 --device-id 0 --format rgb --output camera0 --stream --depth-camera -v"
 
-    start_command "apps/camera-server.sh"
-    use_leaf_child true
+    #    start_command "apps/camera-server.sh"
+    #    use_leaf_child true
 
-    check :cpu, every: 30, below: 80
-    check :memory, every: 30, below: 250.megabytes
+    # check :cpu, every: 30, below: 80
+    # check :memory, every: 30, below: 250.megabytes
   end
 
   process :calibration_natar do
