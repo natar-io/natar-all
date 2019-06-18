@@ -17,7 +17,21 @@ Eye.application :natar_core do
     pid_file 'apps/natar-webserver.pid'
     stdall 'apps/natar-webserver.log'
 
-    start_command "ruby webserver/natar.rb"
+    # Set the natar webserver to production so that it loads the local bundle js
+    env 'APP_ENV' => 'production'
+    start_command "ruby natar-webserver/natar.rb"
+    depend_on :redis
+  end
+
+  process :dev_webserver do
+    daemonize true
+    pid_file 'apps/natar-webserver_dev.pid'
+    stdall 'apps/natar-webserver_dev.log'
+
+    # Set the natar webserver to production so that it loads the local bundle js
+    env 'APP_ENV' => 'development'
+    start_command "foreman start -f natar-webserver/Procfile"
+    use_leaf_child true
     depend_on :redis
   end
 
@@ -30,7 +44,7 @@ Eye.application :natar_core do
     depend_on :redis
 
     check :cpu, every: 30, below: 80
-    check :memory, every: 30, below: 200.megabytes
+    check :memory, every: 30, below: 250.megabytes
   end
 
   process :calibration_natar do
@@ -62,9 +76,9 @@ Eye.application :natar_core do
   end
 
 
-  process :artoolkit do
+  process :artoolkitplus do
     daemonize true
-    pid_file 'apps/artoolkit-tracker.pid'
+    pid_file 'apps/artoolkitplus-tracker.pid'
     stdall 'apps/artoolkitplus-tracker.log'
 
     start_command "apps/artoolkitplus-tracker --input camera0 --output camera0:artoolkitplus --camera-parameters camera0
