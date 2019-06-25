@@ -30,16 +30,19 @@ Eye.application :natar_core do
   working_dir "/usr/share/natar-utilities/"
 
   process :camera do
-    daemonize false
+    daemonize true
     
     ### Problem: The program should be able to output its PID"
     pid_file 'tmp/camera-server.pid'
-        
+    stdall 'tmp/camera-server.log'
+
     # cp = (File.read wd+"apps/classpaths/apps.txt").strip
     # env "CLASSPATH" => cp
     # start_command "java -Xmx128m tech.lity.rea.nectar.camera.CameraServerImpl --driver OPENNI2 --device-id 0 --format rgb --output camera0 --stream --depth-camera -v"
 
-    start_command "apps/camera-server.sh"
+#    env "JAVA_OPTS" => "-Xmx8G #{ENV["JAVA_OPTS"]}"
+#    -Xmx128m -cp $CP:/usr/share/java/natar-apps.ja
+    start_command "camera-server --driver OPENNI2 --device-id 0 --format rgb --output camera0 --stream --depth-camera"
     use_leaf_child true
 
     # check :cpu, every: 30, below: 80
@@ -59,7 +62,7 @@ Eye.application :natar_core do
     daemonize true
     pid_file 'tmp/chilitags-tracker.pid'
 
-    start_command "apps/chilitags-tracker --input camera0 --output camera0:chilitags --camera-parameters camera0 --stream -g"
+    start_command "natar-tracker-chilitags --input camera0 --output camera0:chilitags --camera-parameters camera0 --stream -g"
     depend_on :camera
     check :memory, every:10, below: 200.megabytes
   end
@@ -68,7 +71,7 @@ Eye.application :natar_core do
     daemonize true
     pid_file 'tmp/aruco-tracker.pid'
 
-    start_command "apps/aruco-tracker --input camera0 --output camera0:aruco --camera-parameters camera0 --stream -g"
+    start_command "natar-tracker-aruco --input camera0 --output camera0:aruco --camera-parameters camera0 --stream -g"
     depend_on :camera
     check :memory, every:10, below: 200.megabytes
   end
@@ -79,9 +82,8 @@ Eye.application :natar_core do
     pid_file 'tmp/artoolkitplus-tracker.pid'
     stdall 'tmp/artoolkitplus-tracker.log'
 
-    start_command "apps/artoolkitplus-tracker --input camera0 --output camera0:artoolkitplus --camera-parameters camera0
-    --calibration-file data/artoolkitplus/no_distortion.cal --markerboard-file data/artoolkitplus/markerboard_480-499.cfg
-    --stream -g"
+    start_command "natar-tracker-artoolkitplus --input camera0 --output camera0:artoolkitplus --camera-parameters camera0 --calibration-file /usr/share/natar/natar-tracker-artoolkitplus-git/no_distortion.cal --markerboard-file /usr/share/natar/natar-tracker-artoolkitplus-git/markerboard_480-499.cfg --stream -g"
+
     depend_on :camera
     check :memory, every:10, below: 200.megabytes
   end

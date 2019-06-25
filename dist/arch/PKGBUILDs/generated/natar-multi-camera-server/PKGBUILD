@@ -1,0 +1,66 @@
+# Maintainer: RealityTech <laviole@rea.lity.tech>
+pkgname=java-natar-multi-camera-server
+pkgver=0.1
+pkgrel=1
+pkgdesc=""
+arch=('any')
+url=""
+license=()
+groups=()
+depends=('java-runtime')
+makedepends=('maven' 'jdk8-openjdk')
+provides=()
+conflicts=()
+replaces=()
+
+build() {
+  cd "$startdir"
+
+  mvn dependency:copy-dependencies -Djavacpp.platform=linux-x86_64 
+ }
+
+package() {
+
+ 
+        installOne 'natar-multi-camera-server' 'natar-multi-camera-server'
+
+
+}
+
+ installOne() {
+     local name=$1
+     local artifact=$2
+     local opt=$3
+     install -m644 -D ${startdir}/target/dependency/${artifact}-0.1${opt}.jar ${pkgdir}/usr/share/java/${name}/${pkgver}/${name}-${pkgver}.jar
+     cd ${pkgdir}/usr/share/java/
+     ln -sr ${name}/${pkgver}/${name}-${pkgver}.jar $name.jar
+     ln -sr ${name}/${pkgver}/${name}-${pkgver}.jar $name-${pkgver}.jar
+ }
+
+ installCompact() {
+     local name=$1
+     local artifact=$2
+     local opt=$3
+     install -m644 -D ${startdir}/target/${name}-0.1${opt}.jar ${pkgdir}/usr/share/java/${name}/${pkgver}/${name}-${pkgver}${opt}.jar
+     cd ${pkgdir}/usr/share/java/
+     ln -sr ${name}/${pkgver}/${name}-${pkgver}${opt}.jar $name${opt}.jar
+ }
+
+ installAll() {
+     local name=$1
+     mkdir -p ${pkgdir}/usr/share/java/${name}-with-deps/${pkgver}
+     install -m644 -D ${startdir}/target/dependency/*.jar ${pkgdir}/usr/share/java/${name}-with-deps/${pkgver}/
+     # links ?
+     # ln -sr ${name}/${pkgver}/${name}-${pkgver}.jar $name.jar
+ }
+
+ installJavaCPP() {
+     local jarname=$1
+     local outputname=$2
+     local name=$3
+     install -m644 -D ${startdir}/target/dependency/${jarname} ${pkgdir}/usr/share/java/natar-multi-camera-server/${pkgver}/${outputname}
+     cd ${pkgdir}/usr/share/java/
+     ln -sr natar-multi-camera-server/${pkgver}/${outputname} $name
+     ln -sr natar-multi-camera-server/${pkgver}/${outputname} ${outputname}
+ }
+
