@@ -1,0 +1,19 @@
+[Unit]
+Description=A high performance web server and a reverse proxy server
+After=network.target network-online.target nss-lookup.target
+
+[Service]
+Type=forking
+PIDFile=/run/nginx.pid
+PrivateDevices=yes
+SyslogLevel=err
+
+ExecStartPre=/usr/sbin/nginx -t -c /usr/share/natar-utilities/nginx-natar.conf -q
+ExecStart=/usr/sbin/nginx -c /usr/share/natar-utilities/nginx-natar.conf 
+ExecReload=/usr/sbin/nginx -c /usr/share/natar-utilities/nginx-natar.conf -s reload
+
+KillSignal=SIGQUIT
+KillMode=mixed
+
+[Install]
+WantedBy=multi-user.target
