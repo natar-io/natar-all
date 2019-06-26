@@ -1,6 +1,6 @@
 # Maintainer: Jeremy Laviole <laviole@rea.lity.tech>
 pkgname=natar-tracker-aruco-git
-pkgver=r11.9a75488
+pkgver=r13.1c87100
 pkgrel=1
 pkgdesc="An ArUco tracker for Natar."
 arch=('x86_64')

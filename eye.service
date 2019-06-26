@@ -1,0 +1,11 @@
+[Unit]
+Description=Run the eye daemon
+
+[Service]
+Type=forking
+Environment=HOME=/tmp
+ExecStart=/usr/bin/eye load /etc/eye/config.rb
+ExecStop=/usr/bin/eye quit
+
+[Install]
+WantedBy=multi-user.target

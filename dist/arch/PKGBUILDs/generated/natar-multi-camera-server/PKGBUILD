@@ -21,10 +21,15 @@ build() {
 
 package() {
 
- 
-        installOne 'natar-multi-camera-server' 'natar-multi-camera-server'
+   installOne 'natar-multi-camera-server' 'natar-multi-camera-server'
 
-
+   SRC_J_DIR=$startdir/../../../../../sources/natar-multi-camera-server
+   
+   mkdir -p $pkgdir/usr/bin
+   mkdir -p $pkgdir/usr/share/natar/$pkgname
+   
+   install $SRC_J_DIR/camera-server-dist.sh $pkgdir/usr/bin/camera-server
+   install $SRC_J_DIR/classpath-dist.txt $pkgdir/usr/share/natar/$pkgname/classpath.txt
 }
 
  installOne() {

@@ -1,6 +1,6 @@
 # Maintainer: Jeremy Laviole <laviole@rea.lity.tech>
 pkgname=natar-tracker-artoolkitplus-git
-pkgver=r10.d45ecbe
+pkgver=r12.78c9ce1
 pkgrel=1
 pkgdesc="An ARToolKitPlus tracker for Natar."
 arch=('x86_64')
@@ -33,5 +33,7 @@ build() {
 
 package() {
   cd "$srcdir/${pkgname%-git}/build"
+  mkdir -p $pkgdir/usr/share/natar/
+  cp -R "$srcdir/${pkgname%-git}/data" $pkgdir/usr/share/natar/$pkgname
   make DESTDIR="$pkgdir/" install
 }

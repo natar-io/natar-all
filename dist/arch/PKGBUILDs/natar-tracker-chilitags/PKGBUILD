@@ -1,6 +1,6 @@
 # Maintainer: Jeremy Laviole <laviole@rea.lity.tech>
 pkgname=natar-tracker-chilitags-git
-pkgver=r5.0ae0c20
+pkgver=r7.3e61a64
 pkgrel=1
 pkgdesc="A chilitags tracker for Natar."
 arch=('x86_64')
