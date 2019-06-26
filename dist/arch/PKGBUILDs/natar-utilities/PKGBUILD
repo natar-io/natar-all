@@ -1,6 +1,6 @@
 # Maintainer: Jeremy Laviole <jiii@jiii-mi>
 pkgname=natar-utilities
-pkgver=r102.a9d1a14
+pkgver=r107.37f8718
 pkgrel=1
 epoch=
 pkgdesc="Web admistation for your Natar device."
@@ -43,13 +43,14 @@ package() {
   mkdir -p $pkgdir/usr/share/$pkgname/tmp
   mkdir -p $pkgdir/usr/share/natar-utilities/apps-available
   mkdir -p $pkgdir/usr/share/natar-utilities/apps-enabled
+  mkdir -p $pkgdir/usr/share/natar-utilities/redis/db/
+  mkdir -p $pkgdir/usr/share/natar-utilities/log
   mkdir -p $pkgdir/usr/share/natar-utilities/.eye
   chmod 777 $pkgdir/usr/share/natar-utilities/.eye
 
   mkdir -p $pkgdir/usr/lib/systemd/user
   mkdir -p $pkgdir/usr/lib/systemd/system
   mkdir -p $pkgdir/usr/bin
-  mkdir -p $pkgdir/etc/redis
   mkdir -p $pkgdir/etc/profile.d
 
   install Gemfile.lock $pkgdir/usr/share/$pkgname/
@@ -64,17 +65,17 @@ package() {
   ## Install the main service, as user service
   install eye.service $pkgdir/usr/lib/systemd/user/
   install eye-natar.sh $pkgdir/etc/profile.d/eye-natar.sh
-  
-  #  install natar.eye $pkgdir/usr/share/$pkgname/
-  #  ln -s $pkgdir/usr/share/$pkgname/ $pkgdir/eye.conf
-  #  install natar.eye $pkgdir/eye.conf
 
+  ## Install nginx
+  install nginx-natar.conf $pkgdir/usr/share/natar-utilities/
+
+  install nginx-natar.service $pkgdir/usr/lib/systemd/system/
   install redis-natar.service $pkgdir/usr/lib/systemd/system/
   
-  cd processes
-
   ## Install the redis service
-  install redis.conf $pkgdir/etc/redis-natar.conf
+  install redis-natar.conf  $pkgdir/usr/share/natar-utilities/redis-natar.conf
+
+  cd processes
 
   cp -r data $pkgdir/usr/share/$pkgname/
   cp -r apps $pkgdir/usr/share/$pkgname/
