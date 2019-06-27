@@ -12,6 +12,22 @@ Eye.application :natar_core do
   wd =  "/usr/share/natar-utilities/"
   working_dir "/usr/share/natar-utilities/"
 
+
+  process :developper_mode do
+    daemonize true
+    
+    ### Problem: The program should be able to output its PID"
+    pid_file 'tmp/camera-client-dev.pid'
+    stdall 'tmp/camera-client-dev.log'
+
+    start_command "camera-client -i display0 -f"
+    use_leaf_child true
+
+    # check :cpu, every: 30, below: 80
+    # check :memory, every: 30, below: 250.megabytes
+  end
+
+  
   process :camera do
     daemonize true
     
@@ -54,7 +70,8 @@ Eye.application :natar_core do
     daemonize true
     pid_file 'tmp/aruco-tracker.pid'
 
-    start_command "natar-tracker-aruco --input camera0 --output camera0:aruco --camera-parameters camera0 --stream -g"
+    ##     start_command "natar-tracker-aruco --input camera0 --output camera0:aruco --camera-parameters camera0 --stream -g" 
+    start_command "natar-tracker-aruco --input camera0 --output camera0:markers --camera-parameters camera0 --stream -g"
     depend_on :camera
     check :memory, every:10, below: 200.megabytes
   end
@@ -65,7 +82,7 @@ Eye.application :natar_core do
     pid_file 'tmp/artoolkitplus-tracker.pid'
     stdall 'tmp/artoolkitplus-tracker.log'
 
-    start_command "natar-tracker-artoolkitplus --input camera0 --output camera0:artoolkitplus --camera-parameters camera0 --calibration-file /usr/share/natar/natar-tracker-artoolkitplus-git/no_distortion.cal --markerboard-file /usr/share/natar/natar-tracker-artoolkitplus-git/markerboard_480-499.cfg --stream -g"
+    start_command "natar-tracker-artoolkitplus --input camera0 --output camera0:markers --camera-parameters camera0 --calibration-file /usr/share/natar/natar-tracker-artoolkitplus-git/no_distortion.cal --markerboard-file /usr/share/natar/natar-tracker-artoolkitplus-git/markerboard_480-499.cfg --stream -g"
 
     depend_on :camera
     check :memory, every:10, below: 200.megabytes
