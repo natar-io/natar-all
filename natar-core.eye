@@ -20,6 +20,7 @@ Eye.application :natar_core do
     pid_file 'tmp/camera-client-dev.pid'
     stdall 'tmp/camera-client-dev.log'
 
+    env "DISPLAY" => ":0"
     start_command "camera-client -i display0 -f"
     use_leaf_child true
 

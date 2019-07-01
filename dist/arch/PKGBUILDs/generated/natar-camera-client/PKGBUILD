@@ -1,6 +1,6 @@
 # Maintainer: RealityTech <laviole@rea.lity.tech>
 pkgname=java-natar-camera-client
-pkgver=0.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc=""
 arch=('any')
@@ -22,11 +22,8 @@ build() {
 package() {
   installOne 'natar-camera-client' 'natar-camera-client'
 
-  mkdir -p $pkgdir/usr/bin
-  mkdir -p $pkgdir/usr/share/natar/$pkgname
-
   # TODO: clone + checkout ?
-  SRC_DIR=$startdir/../../../../../sources/$pkgname
+  SRC_DIR=$startdir/../../../../../sources/natar-camera-client
   
   mkdir -p $pkgdir/usr/bin
   mkdir -p $pkgdir/usr/share/natar/$pkgname

@@ -162,7 +162,7 @@ natar-detections:
 natar-apps:
   groupid: tech.lity.rea
   artifactid: natar-apps
-  version: 0.1
+  version: 0.1.1
 natar-multi-camera-server:
   groupid: tech.lity.rea
   artifactid: natar-multi-camera-server

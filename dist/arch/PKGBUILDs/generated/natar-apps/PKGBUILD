@@ -1,6 +1,6 @@
 # Maintainer: RealityTech <laviole@rea.lity.tech>
-pkgname=java-natar-multi-camera-server
-pkgver=0.1.2a
+pkgname=java-natar-apps
+pkgver=0.1.1
 pkgrel=1
 pkgdesc=""
 arch=('any')
@@ -21,22 +21,24 @@ build() {
 
 package() {
 
-   installOne 'natar-multi-camera-server' 'natar-multi-camera-server'
+  installOne 'natar-apps' 'natar-apps'
 
-   SRC_DIR=$startdir/../../../../../sources/$pkgname
-   
-   mkdir -p $pkgdir/usr/bin
-   mkdir -p $pkgdir/usr/share/natar/$pkgname
-   
-   install $SRC_DIR/camera-server-dist.sh $pkgdir/usr/bin/camera-server
-   install $SRC_DIR/classpath-dist.txt $pkgdir/usr/share/natar/$pkgname/classpath.txt
+  # TODO: clone + checkout ?
+  SRC_DIR=$startdir/../../../../../sources/natar-apps
+  
+  mkdir -p $pkgdir/usr/bin
+  mkdir -p $pkgdir/usr/share/natar/$pkgname
+  
+  install $SRC_DIR/run-dist.sh $pkgdir/usr/bin/natar-app
+  install $SRC_DIR/classpath-dist.txt $pkgdir/usr/share/natar/$pkgname/classpath.txt
+
 }
 
  installOne() {
      local name=$1
      local artifact=$2
      local opt=$3
-     install -m644 -D ${startdir}/target/dependency/${artifact}-0.1${opt}.jar ${pkgdir}/usr/share/java/${name}/${pkgver}/${name}-${pkgver}.jar
+     install -m644 -D ${startdir}/target/dependency/${artifact}-$pkgver${opt}.jar ${pkgdir}/usr/share/java/${name}/${pkgver}/${name}-${pkgver}.jar
      cd ${pkgdir}/usr/share/java/
      ln -sr ${name}/${pkgver}/${name}-${pkgver}.jar $name.jar
      ln -sr ${name}/${pkgver}/${name}-${pkgver}.jar $name-${pkgver}.jar
@@ -63,9 +65,9 @@ package() {
      local jarname=$1
      local outputname=$2
      local name=$3
-     install -m644 -D ${startdir}/target/dependency/${jarname} ${pkgdir}/usr/share/java/natar-multi-camera-server/${pkgver}/${outputname}
+     install -m644 -D ${startdir}/target/dependency/${jarname} ${pkgdir}/usr/share/java/natar-apps/${pkgver}/${outputname}
      cd ${pkgdir}/usr/share/java/
-     ln -sr natar-multi-camera-server/${pkgver}/${outputname} $name
-     ln -sr natar-multi-camera-server/${pkgver}/${outputname} ${outputname}
+     ln -sr natar-apps/${pkgver}/${outputname} $name
+     ln -sr natar-apps/${pkgver}/${outputname} ${outputname}
  }
 

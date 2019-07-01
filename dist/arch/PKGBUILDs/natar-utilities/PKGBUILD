@@ -1,6 +1,6 @@
 # Maintainer: Jeremy Laviole <jiii@jiii-mi>
 pkgname=natar-utilities
-pkgver=r108.516ab09
+pkgver=r111.e66c5bf
 pkgrel=1
 epoch=
 pkgdesc="Web admistation for your Natar device."
@@ -43,10 +43,6 @@ package() {
   mkdir -p $pkgdir/usr/share/$pkgname/tmp
   mkdir -p $pkgdir/usr/share/natar-utilities/apps-available
   mkdir -p $pkgdir/usr/share/natar-utilities/apps-enabled
-  mkdir -p $pkgdir/usr/share/natar-utilities/redis/db/
-
-  sudo chown redis:redis -R $pkgdir/usr/share/natar-utilities/redis
-  sudo chown redis:redis -R $pkgdir/usr/share/natar-utilities/redis/db
   
   mkdir -p $pkgdir/usr/share/natar-utilities/log
   mkdir -p $pkgdir/usr/share/natar-utilities/.eye
