@@ -1,6 +1,6 @@
 # Maintainer: RealityTech <laviole@rea.lity.tech>
 pkgname=java-natar-camera-client
-pkgver=0.1.2
+pkgver=0.1.2c
 pkgrel=1
 pkgdesc=""
 arch=('any')

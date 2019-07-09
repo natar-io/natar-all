@@ -158,19 +158,19 @@ ProcessingTUIO:
 natar-detections:
   groupid: tech.lity.rea
   artifactid: natar-detections
-  version: 0.1
+  version: 0.1.2c
 natar-apps:
   groupid: tech.lity.rea
   artifactid: natar-apps
-  version: 0.1.1
+  version: 0.1.2c
 natar-multi-camera-server:
   groupid: tech.lity.rea
   artifactid: natar-multi-camera-server
-  version: 0.1
+  version: 0.1.2c
 natar-camera-client:
   groupid: tech.lity.rea
   artifactid: natar-camera-client
-  version: 0.1
+  version: 0.1.2c
 SimplePointCloud:
   groupid: tech.lity.rea
   artifactid: SimplePointCloud
@@ -182,7 +182,7 @@ guava:
 natar-core:
   groupid: tech.lity.rea
   artifactid: natar-core
-  version: 0.1
+  version: 0.1.2c
 libfreenect-platform:
   groupid: org.bytedeco.javacpp-presets
   artifactid: libfreenect-platform

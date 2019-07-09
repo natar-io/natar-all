@@ -1,6 +1,6 @@
 # Maintainer: RealityTech <laviole@rea.lity.tech>
 pkgname=java-natar-multi-camera-server
-pkgver=0.1.2a
+pkgver=0.1.2c
 pkgrel=1
 pkgdesc=""
 arch=('any')
@@ -23,7 +23,7 @@ package() {
 
    installOne 'natar-multi-camera-server' 'natar-multi-camera-server'
 
-   SRC_DIR=$startdir/../../../../../sources/$pkgname
+   SRC_DIR=$startdir/../../../../../sources/natar-multi-camera-server
    
    mkdir -p $pkgdir/usr/bin
    mkdir -p $pkgdir/usr/share/natar/$pkgname

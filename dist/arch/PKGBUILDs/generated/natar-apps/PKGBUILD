@@ -1,6 +1,6 @@
 # Maintainer: RealityTech <laviole@rea.lity.tech>
 pkgname=java-natar-apps
-pkgver=0.1.1
+pkgver=0.1.2c
 pkgrel=1
 pkgdesc=""
 arch=('any')
