@@ -28,6 +28,17 @@ Eye.application :natar_core do
     # check :memory, every: 30, below: 250.megabytes
   end
 
+
+  process :pose_estimator do
+    daemonize true
+    
+    pid_file 'tmp/pose-estimator.pid'
+    stdall 'tmp/pose-estimator.log'
+
+    start_command "natar-app tech.lity.rea.nectar.apps.MultiPoseEstimator -i camera0"
+    use_leaf_child true
+
+  end
   
   process :camera do
     daemonize true
@@ -49,6 +60,7 @@ Eye.application :natar_core do
     # check :memory, every: 30, below: 250.megabytes
   end
 
+  ## TODO: Finish the calibration...
   process :calibration_natar do
     daemonize true
     pid_file 'tmp/calibration-server.pid'

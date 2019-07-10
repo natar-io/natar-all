@@ -1,7 +1,7 @@
 # Maintainer: RealityTech <laviole@rea.lity.tech>
 pkgname=java-natar-multi-camera-server
 pkgver=0.1.2c
-pkgrel=1
+pkgrel=3
 pkgdesc=""
 arch=('any')
 url=""
