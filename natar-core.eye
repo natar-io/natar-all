@@ -35,7 +35,7 @@ Eye.application :natar_core do
     pid_file 'tmp/pose-estimator.pid'
     stdall 'tmp/pose-estimator.log'
 
-    start_command "natar-app tech.lity.rea.nectar.apps.MultiPoseEstimator -i camera0"
+    start_command "natar-app tech.lity.rea.nectar.apps.MultiPoseEstimator -i camera0 -x"
     use_leaf_child true
 
   end
