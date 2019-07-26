@@ -15,7 +15,7 @@ markers=$SKETCHBOOK/libraries/PapARt/data/markers
 $cmd $prog -p / -f $data/camProjExtrinsics.xml -o projector0:extrinsics -m -i
 
 #Table
-$cmd $prog -p / -f $data/tablePosition.xml -m -o table:extrinsics
+$cmd $prog -p / -f $data/tablePosition.xml -m -o camera0:table
 
 #Markerboards
 $cmd $prog -p / -f $markers/calib1.svg -mb -o calib1
