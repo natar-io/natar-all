@@ -1,7 +1,7 @@
 # Maintainer: RealityTech <laviole@rea.lity.tech>
 pkgname=java-natar-multi-camera-server
 pkgver=0.1.2c
-pkgrel=3
+pkgrel=5
 pkgdesc=""
 arch=('any')
 url=""
@@ -36,7 +36,7 @@ package() {
      local name=$1
      local artifact=$2
      local opt=$3
-     install -m644 -D ${startdir}/target/dependency/${artifact}-0.1${opt}.jar ${pkgdir}/usr/share/java/${name}/${pkgver}/${name}-${pkgver}.jar
+     install -m644 -D ${startdir}/target/dependency/${artifact}-${pkgver}${opt}.jar ${pkgdir}/usr/share/java/${name}/${pkgver}/${name}-${pkgver}.jar
      cd ${pkgdir}/usr/share/java/
      ln -sr ${name}/${pkgver}/${name}-${pkgver}.jar $name.jar
      ln -sr ${name}/${pkgver}/${name}-${pkgver}.jar $name-${pkgver}.jar
@@ -46,7 +46,7 @@ package() {
      local name=$1
      local artifact=$2
      local opt=$3
-     install -m644 -D ${startdir}/target/${name}-0.1${opt}.jar ${pkgdir}/usr/share/java/${name}/${pkgver}/${name}-${pkgver}${opt}.jar
+     install -m644 -D ${startdir}/target/${name}-${pkgver}${opt}.jar ${pkgdir}/usr/share/java/${name}/${pkgver}/${name}-${pkgver}${opt}.jar
      cd ${pkgdir}/usr/share/java/
      ln -sr ${name}/${pkgver}/${name}-${pkgver}${opt}.jar $name${opt}.jar
  }

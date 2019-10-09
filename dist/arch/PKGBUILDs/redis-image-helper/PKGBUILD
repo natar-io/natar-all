@@ -1,7 +1,7 @@
 # Maintainer: Your Name <laviole@rea.lity.tech>
 pkgname=libnatar-redis-image-git
-pkgver=r24.27d83c9
-pkgrel=7
+pkgver=r25.a7ee015
+pkgrel=1
 pkgdesc="A minimal C++ library that provides simple ways to handle image manipulation in Redis."
 arch=('x86_64')
 url=""

@@ -1,6 +1,6 @@
 # Maintainer: Jeremy Laviole <jiii@jiii-mi>
 pkgname=natar-utilities
-pkgver=r111.e66c5bf
+pkgver=r122.86a5e2e
 pkgrel=1
 epoch=
 pkgdesc="Web admistation for your Natar device."
@@ -62,11 +62,15 @@ package() {
   install natar-webserver.eye $pkgdir/usr/share/natar-utilities/apps-enabled
   install natar-core.eye $pkgdir/usr/share/natar-utilities/apps-enabled
 
+  install load-calibrations-to-natar.sh $pkgdir/usr/bin/load-calibrations-to-natar
+  install load-local-calibrations.sh $pkgdir/usr/bin/load-local-calibrations
+  install load-services.sh $pkgdir/usr/bin/load-services
+  
   ## Install the main service, as user service
   install eye.service $pkgdir/usr/lib/systemd/user/
   install eye-natar.sh $pkgdir/etc/profile.d/eye-natar.sh
 
-  ## Install nginx
+    ## Install nginx
   install nginx-natar.conf $pkgdir/usr/share/natar-utilities/
 
   install nginx-natar.service $pkgdir/usr/lib/systemd/system/
