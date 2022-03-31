@@ -16,7 +16,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("${pkgname%-git}::git+ssh://git@forge.pole-aquinetic.net/nectar-platform/natar-tracker-chilitags.git")
+source=("${pkgname%-git}::git+ssh://git@github.com/natar-io/natar-tracker-chilitags.git")
 md5sums=('SKIP')
 
 pkgver() {

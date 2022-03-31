@@ -1,6 +1,7 @@
 #!/bin/bash
 
-git clone git@forge.pole-aquinetic.net:nectar-platform/natar-camera-client.git
+## NOT OK, pom to update
+git clone git@github.com:natar-io/natar-camera-client.git
 
 cd natar-camera-client
 git pull

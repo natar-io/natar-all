@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git clone git@forge.pole-aquinetic.net:nectar-platform/redis-image-helper.git
+git clone git@github.com:natar-io/redis-image-helper.git
 cd redis-image-helper
 git checkout master
 mkdir build ; cd build

@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("${pkgname%-git}::git+ssh://git@forge.pole-aquinetic.net/nectar-platform/utilities.git#branch=dist")
+source=("${pkgname%-git}::git+ssh://git@github.com:natar-io/utilities.git#branch=dist")
 md5sums=('SKIP')
 noextract=()
 

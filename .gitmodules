@@ -1,3 +1,3 @@
 [submodule "processes/natar-webserver"]
 	path = processes/natar-webserver
-	url = https://forge.pole-aquinetic.net/nectar-platform/natar-webserver
+	url = https://github.com:natar-io/natar-webserver

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git clone git@forge.pole-aquinetic.net:nectar-platform/natar-detections.git
+git clone git@github.com:natar-io/natar-detections.git
 cd natar-detections
 git pull
 mvn install

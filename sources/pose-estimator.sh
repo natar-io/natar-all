@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Download pose estimator 
-git clone git@forge.pole-aquinetic.net:nectar-platform/pose-estimator-papart.git
+git clone git@github.com:natar-io/pose-estimator-papart.git
 
 cd pose-estimator-papart
 git fetch

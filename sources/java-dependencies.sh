@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#OK for all
 git clone https://github.com/Rea-lity-Tech/SimplePointCloud.git
 cd SimplePointCloud
 mvn install
@@ -25,7 +25,8 @@ cd Skatolo
 mvn install
 cd ..
 
-git clone git@forge.pole-aquinetic.net:RealityTechPublic/javacv-processing.git
-cd javacv-processing
-mvn install
-cd ..
+## What was this ?
+# git clone git@forge.pole-aquinetic.net:RealityTechPublic/javacv-processing.git
+# cd javacv-processing
+# mvn install
+# cd ..

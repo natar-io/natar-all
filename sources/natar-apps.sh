@@ -1,6 +1,6 @@
 #!/bin/bash
-
-git clone git@forge.pole-aquinetic.net:nectar-platform/natar-apps.git
+# OK
+git clone git@github.com:natar-io/natar-apps.git
 cd natar-apps
 git pull
 mvn install

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git clone git@forge.pole-aquinetic.net:nectar-platform/natar-tracker-aruco.git
+git clone git@github.com:natar-io/natar-tracker-aruco.git
 cd natar-tracker-aruco
 if [ $? -eq 0 ]; then
 	git checkout master

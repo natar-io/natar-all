@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("${pkgname%-git}::git+ssh://git@forge.pole-aquinetic.net/nectar-platform/redis-image-helper.git")
+source=("${pkgname%-git}::git+ssh://git@github.com/natar-io/redis-image-helper.git")
 md5sums=('SKIP')
 
 ## local sources
